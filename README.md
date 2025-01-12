@@ -1,2 +1,3 @@
-# imperial-college-london-maths
-ML maths at Imperial College London
+# CPC357 IoT Architecture and Smart Applications
+
+Project
