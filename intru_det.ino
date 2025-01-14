@@ -2,15 +2,15 @@
 #include <PubSubClient.h>
 
 const int pirPin = 14;        // PIR sensor (Maker: Pin 4, NodeMCU: Pin 14)
-const int ledPin = 18;       // Red LED (Maker: Pin 10, NodeMCU: Pin 18)
-const int doorSensor = 16;
-const int buzzer = 12;      // Relay (Maker: Pin 39, NodeMCU: Pin 32)
+const int ledPin = 18;        // Red LED (Maker: Pin 10, NodeMCU: Pin 18)
+const int doorSensor = 16;    // Door switch
+const int buzzer = 12;        // Buzzer (Relay: Pin 39, NodeMCU: Pin 32)
 
-const char* WIFI_SSID = "cslab";            // Your WiFi SSID
-const char* WIFI_PASSWORD = "aksesg31";           // Your WiFi password
-const char* MQTT_SERVER = "34.60.69.11";        // Your VM instance public IP address
-const char* MQTT_TOPIC = "iot";                   // MQTT topic for subscription
-const int MQTT_PORT = 1883;   
+const char* WIFI_SSID = "cslab";          // Your WiFi SSID
+const char* WIFI_PASSWORD = "aksesg31";   // Your WiFi password
+const char* MQTT_SERVER = "34.60.69.11";  // Your VM instance public IP address
+const char* MQTT_TOPIC = "iot";           // MQTT topic for subscription
+const int MQTT_PORT = 1883;               // MQTT port
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -38,8 +38,8 @@ void setup() {
 
   pinMode(ledPin, OUTPUT);
   pinMode(buzzer, OUTPUT);
-  pinMode(doorSensor, INPUT_PULLUP);
-  pinMode(pirPin, INPUT);
+  pinMode(doorSensor, INPUT_PULLUP);   // Door sensor with internal pull-up
+  pinMode(pirPin, INPUT);               // PIR sensor
 
   setup_wifi();
   client.setServer(MQTT_SERVER, MQTT_PORT);
@@ -65,17 +65,20 @@ void loop() {
   }
   client.loop();
 
-  int PIRvalue = digitalRead(pirPin);
-  int DoorValue = digitalRead(doorSensor);
+  int PIRvalue = digitalRead(pirPin);        // PIR sensor reading
+  int DoorValue = digitalRead(doorSensor);   // Door switch reading
 
-  if (PIRvalue == HIGH || DoorValue == LOW) {
-    digitalWrite(ledPin, HIGH);
-    tone(buzzer, 1000, 500);
+  // If door is closed (LOW), set DoorValue to 0, else set to 1
+  DoorValue = (DoorValue == LOW) ? 0 : 1;    // Door closed (LOW) gives 0, open (HIGH) gives 1
+
+  if (PIRvalue == HIGH || DoorValue == 0) {
+    digitalWrite(ledPin, HIGH);     // LED ON
+    tone(buzzer, 1000, 500);        // Buzzer ON
     char payload[100];
     snprintf(payload, sizeof(payload), "{\"PIR\":%d,\"Door\":%d}", PIRvalue, DoorValue);
-    client.publish(MQTT_TOPIC, payload);
-    delay(2000);
+    client.publish(MQTT_TOPIC, payload); // Send data via MQTT
+    delay(2000); // Delay to avoid repeated triggering
   } else {
-    digitalWrite(ledPin, LOW);
+    digitalWrite(ledPin, LOW);      // LED OFF
   }
 }
