@@ -1,9 +1,11 @@
 import json 
 import pymongo 
 import paho.mqtt.client as mqtt 
+
 from datetime import datetime, timezone 
 from pymongo.mongo_client import MongoClient 
 from pymongo.server_api import ServerApi
+
 uri = "mongodb+srv://sham:1234@project357.2awiz.mongodb.net/?retryWrites=true&w=majority&appName=Project357"
 client = MongoClient(uri, server_api=ServerApi('1'))
 
@@ -19,8 +21,8 @@ db = client["smarthome"]
 collection = db["iot"]
 
 # MQTT configuration
-mqtt_broker_address = "34.60.69.11"
-mqtt_topic = "iot"
+mqtt_broker_address = ""
+mqtt_topic = ""
 
 # Define the callback function for connection
 def on_connect(client, userdata, flags, reason_code):
@@ -52,6 +54,7 @@ def on_message(client, userdata, message):
         # Insert the document into MongoDB
         collection.insert_one(document)
         print("Data ingested into MongoDB")
+        
     except json.JSONDecodeError as e:
         print(f"Failed to decode JSON: {e}")
     except Exception as e:
@@ -65,7 +68,7 @@ client_mqtt.on_connect = on_connect
 client_mqtt.on_message = on_message
 
 # Connect to MQTT broker
-client_mqtt.connect(mqtt_broker_address, 1883, 60)
+client_mqtt.connect(mqtt_broker_address, , 60)
 
 # Start the MQTT loop
 client_mqtt.loop_forever()
