@@ -2,9 +2,7 @@
 
 ## Project Overview
 
-The system deploys a passive infrared (PIR) motion sensor and an MC-38 door magnetic sensor switch that are interfaced with the NodeMCU-32S to detect unauthorised access through the use of those sensors by providing alerts in near-real-time.
-
-When the PIR sensor senses movement or the door sensor detects an opening, it sends the data to the NodeMCU-32S board. The board will then activate the buzzer, which sounds an alarm and blinks the LED as a visual alert signal.
+The system deploys a passive infrared (PIR) motion sensor and an MC-38 door magnetic sensor switch that are interfaced with the NodeMCU-32S to detect unauthorised access through the use of those sensors by providing alerts in near-real-time. When the PIR sensor senses movement or the door sensor detects an opening, it sends the data to the NodeMCU-32S board. The board will then activate the buzzer, which sounds an alarm and blinks the LED as a visual alert signal.
 
 To communicate with the cloud, the NodeMCU-32S uses the MQTT protocol to publish the intrusion event data to the Google Cloud Platform. Google Cloud enables the collection of intrusion event data and stores it in a MongoDB for data persistence. Finally, the intrusion events data from the MongoDB Atlas (cloud database) to visualise the ingested data using the Atlas dashboard.
 
@@ -16,7 +14,25 @@ To communicate with the cloud, the NodeMCU-32S uses the MQTT protocol to publish
 
 ### Components
 
+#### Hardwares
+
 - NodeMCU-32S WiFi Bluetooth BLE IoT Dev Board
-- PIR Motion Sensor
-- 
+- Passive Infrared Motion Sensor
+- MC-38 Door Magnetic Sensor
+- Active Buzzer - PCB Mount
+- LED 5mm
+
+#### Software
+
+- Google Cloud Platform
+- Arduino IDE
+- MongoDB Atlas
+
+### Architecture Diagram
+
+[TBA]
+
+## Setup Guidance
+
+
 
