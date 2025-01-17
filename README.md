@@ -14,7 +14,7 @@ To communicate with the cloud, the NodeMCU-32S uses the MQTT protocol to publish
 
 ### Components
 
-#### Hardwares
+#### Hardware
 
 - NodeMCU-32S WiFi Bluetooth BLE IoT Dev Board
 - Passive Infrared Motion Sensor
@@ -33,6 +33,10 @@ To communicate with the cloud, the NodeMCU-32S uses the MQTT protocol to publish
 [TBA]
 
 ## Setup Guidance
+
+### Hardware Setup
+
+### Software Setup
 
 
 
