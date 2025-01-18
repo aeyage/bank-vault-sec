@@ -9,10 +9,10 @@ The system deploys a passive infrared (PIR) motion sensor and an MC-38 door magn
 To communicate with the cloud, the NodeMCU-32S uses the MQTT protocol to publish the intrusion event data to the Google Cloud Platform. Google Cloud enables the collection of intrusion event data and stores it in a MongoDB for data persistence. Finally, the intrusion events data from the MongoDB Atlas (cloud database) to visualise the ingested data using the Atlas dashboard.
 
 > [!NOTE]
-> Some working knowledge in physics and electronic circuits will be useful didactically albeit not necessarily required.
-> Prerequisites before getting started with IoT projects are basic knowledge on sensors and low-level electronic components,
-> some idea about System on a Chip (SoC), microcontrollers & microprocessors, protocols and network, and wireless tech such as
-> WiFi, Zigbee, BLE, LoRa, etc. Finally, extensive knowledge on cloud computing and programming languages like C++ and Python.
+> Some working knowledge in physics and electronics will be useful didactically albeit not necessarily required.
+> Prerequisites before getting started with IoT projects are basic knowledge on sensors and electronic components
+> including System on a Chip (SoC), microcontrollers & microprocessors, protocols and network, and wireless tech such as
+> WiFi, Zigbee, BLE, LoRa, etc. Finally, extensive knowledge in cloud computing and programming languages like C++ and Python.
 
 
 ## System Architecture
