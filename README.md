@@ -34,8 +34,9 @@ Subsequently, NodeMCU-32S interfaces with Google Cloud via MQTT protocol to publ
 - MongoDB Atlas
 
 ### Architecture Diagram
+![iot_proj](https://github.com/user-attachments/assets/018c6123-b557-465e-a160-82bed9491b87)
 
-[TBA]
+
 
 ## Setup Guidance
 
