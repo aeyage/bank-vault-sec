@@ -10,8 +10,8 @@ Subsequently, NodeMCU-32S interfaces with Google Cloud via MQTT protocol to publ
 
 > [!NOTE]
 > Some working knowledge in physics and electronics will be useful didactically albeit not necessarily required.
-> Prerequisites before getting started with IoT projects are basic knowledge on sensors and electronic components
-> including System on a Chip (SoC), microcontrollers & microprocessors, networking protocols, and wireless tech such as
+> Good-to-haves before getting started with IoT projects are basic knowledge on sensors and electronic components
+> including System on a Chip, microcontrollers & microprocessors, networking protocols, and wireless tech such as
 > WiFi, Zigbee, BLE, LoRa, etc. Finally, extensive knowledge in cloud computing and programming languages like C++ and Python.
 
 
