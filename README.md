@@ -1,5 +1,7 @@
 # Bank Vault Security
 
+![bank_vault_security](https://github.com/user-attachments/assets/dd7d8b47-196b-4420-a8e0-b1c59b37a4cb)
+
 ## Project Overview
 
 The system deploys a passive infrared (PIR) motion sensor and an MC-38 door magnetic sensor switch that are interfaced with the NodeMCU-32S to detect unauthorised access to the bank vault through the use of those sensors by providing alerts in near-real-time. When the PIR sensor senses movement or the door sensor detects an opening, it sends the data to the NodeMCU-32S board. The board will then activate the buzzer, which sounds an alarm and blinks the LED as a visual alert signal.
