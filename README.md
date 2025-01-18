@@ -11,7 +11,7 @@ To communicate with the cloud, the NodeMCU-32S uses the MQTT protocol to publish
 > [!NOTE]
 > Some working knowledge in physics and electronics will be useful didactically albeit not necessarily required.
 > Prerequisites before getting started with IoT projects are basic knowledge on sensors and electronic components
-> including System on a Chip (SoC), microcontrollers & microprocessors, protocols and network, and wireless tech such as
+> including System on a Chip (SoC), microcontrollers & microprocessors, networking protocols, and wireless tech such as
 > WiFi, Zigbee, BLE, LoRa, etc. Finally, extensive knowledge in cloud computing and programming languages like C++ and Python.
 
 
