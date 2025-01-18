@@ -6,7 +6,7 @@
 
 The system deploys a passive infrared (PIR) motion sensor and an MC-38 door magnetic sensor switch that are interfaced with the NodeMCU-32S to detect unauthorised access to the bank vault through the use of those sensors by providing alerts in near-real-time. When the PIR sensor senses movement or the door sensor detects an opening, it sends the data to the NodeMCU-32S board. The board will then activate the buzzer, which sounds an alarm and blinks the LED as a visual alert signal.
 
-To communicate with the cloud, the NodeMCU-32S uses the MQTT protocol to publish the intrusion event data to the Google Cloud Platform. Google Cloud enables the collection of intrusion event data and stores it in a MongoDB for data persistence. Finally, the intrusion events data from the MongoDB Atlas (cloud database) to visualise the ingested data using the Atlas dashboard.
+Subsequently, NodeMCU-32S interfaces with Google Cloud via MQTT protocol to publish the intrusion event data to the cloud. Google Cloud enables the ingestion of the data and stores it in MongoDB for data persistence. [connect with Atlas via URI] Finally, the intrusion events data from MongoDB Atlas to visualise the ingested data using the Atlas dashboard.
 
 > [!NOTE]
 > Some working knowledge in physics and electronics will be useful didactically albeit not necessarily required.
