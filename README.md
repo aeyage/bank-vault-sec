@@ -38,7 +38,7 @@ Subsequently, NodeMCU-32S interfaces with Google Cloud via MQTT protocol to publ
 
 
 
-## Setup Guidance
+## Setup Guide
 
 ### Hardware Setup
 
