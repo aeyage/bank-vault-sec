@@ -6,8 +6,8 @@ const int ledPin = 18;
 const int doorSensor = 16;    
 const int buzzer = 12;        
 
-const char* WIFI_SSID = "@aeyage iP";          // Your WiFi SSID
-const char* WIFI_PASSWORD = "kissmefirst";   // Your WiFi password
+const char* WIFI_SSID = "<Wifi Name>";          // Your WiFi SSID
+const char* WIFI_PASSWORD = "<Wifi Password>";   // Your WiFi password
 const char* MQTT_SERVER = "34.60.69.11";  // Your VM instance public IP address
 const char* MQTT_TOPIC = "iot";           // MQTT topic for subscription
 const int MQTT_PORT = 1883;               // MQTT port
