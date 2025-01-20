@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from pymongo.mongo_client import MongoClient 
 from pymongo.server_api import ServerApi
 
-uri = "mongodb+srv://sham:1234@project357.2awiz.mongodb.net/?retryWrites=true&w=majority&appName=Project357"
+uri = "mongodb+srv://sham:<dbpassword>@project357.2awiz.mongodb.net/?retryWrites=true&w=majority&appName=Project357"
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 # Test connection to MongoDB Atlas
