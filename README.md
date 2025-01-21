@@ -4,9 +4,9 @@
 <img src="https://github.com/user-attachments/assets/dd7d8b47-196b-4420-a8e0-b1c59b37a4cb" width="50%">
 </p>
 
-- - - -
+Authored by Aiman Hakimi, 2025.
 
-Author: Aiman Hakimi
+- - - -
 
 ## Project Overview ##
 
@@ -16,8 +16,8 @@ Subsequently, NodeMCU-32S interfaces with Google Cloud via MQTT protocol to publ
 
 > [!NOTE]
 > Some working knowledge in physics and electronics will be useful didactically albeit not necessarily required.
->> Good-to-haves before getting started with IoT projects are basic knowledge on sensors and electronic components
->> including System on a Chip, microcontrollers & microprocessors, networking protocols, and wireless connectivity such as
+>> Good-to-haves before getting started with IoT projects are basic knowledge in electronic components
+>> including microcontrollers, sensors, actuators, and servo, alongside with networking protocols, and wireless connectivity such as
 >> WiFi, Zigbee, BLE, LoRa, etc. Finally, extensive knowledge in cloud computing and programming languages like C++, Python, and Lua (non-exhaustive list).
 
 
@@ -48,9 +48,8 @@ Male-to-Male Jumper Wires | \|
 We may commence setting up the project by wiring each component on the NodeMCU-32S board before interfacing it with the software.
 
 >[!IMPORTANT]
-> The NodeMCU-32S board has several GPIO pins. For a clearer understanding of the available pins on the board, please refer to
->[pinout diagram](https://wiki.geekworm.com/NodeMCU-32S) or [the schematic diagram](#DIAG).
-
+> The NodeMCU-32S board has several GPIO pins. For a clearer understanding of the available pins on the board, kindly refer to
+> [pinout diagram](https://wiki.geekworm.com/NodeMCU-32S) or the [schematic diagram](#DIAG).
 
   - Active Buzzer - PCB Mount
     - GPIO12 -> +ve leg
@@ -75,6 +74,19 @@ We may commence setting up the project by wiring each component on the NodeMCU-3
 > to ensure that the data can be ingested and read successfully in the software section later on.
 
 ### Software Setup
+
+#### Arduino IDE 
+
+Download the latest release of Arduino IDE and set it up by installing all necessary libraries such as `Arduino_JSON`, `EspMQTTClient` and configure the board by installing and including `esp32` library in the IDE through board manager. Connect your machine to the NodeMCU-ESP32 via serial port (COMx) before compiling `intru_det.ino`.
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/e68689d6-bb96-4658-ac17-43decb6ff442" width="50%">
+</p>
+
+#### Google Compute Engine Virtual Machine
+
+
+
 
 
 
