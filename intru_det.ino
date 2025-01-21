@@ -6,11 +6,11 @@ const int ledPin = 18;
 const int doorSensor = 16;    
 const int buzzer = 12;        
 
-const char* WIFI_SSID = "<Wifi Name>";          // Your WiFi SSID
-const char* WIFI_PASSWORD = "<Wifi Password>";   // Your WiFi password
-const char* MQTT_SERVER = "34.60.69.11";  // Your VM instance public IP address
-const char* MQTT_TOPIC = "iot";           // MQTT topic for subscription
-const int MQTT_PORT = 1883;               // MQTT port
+const char* WIFI_SSID = "<Wifi Name>";           // WiFi SSID
+const char* WIFI_PASSWORD = "<Wifi Password>";   // WiFi password
+const char* MQTT_SERVER = "";                    // VM instance external IP address
+const char* MQTT_TOPIC = "";                     // MQTT topic for subscription
+const int MQTT_PORT = ;                          // MQTT port
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -38,8 +38,8 @@ void setup() {
 
   pinMode(ledPin, OUTPUT);
   pinMode(buzzer, OUTPUT);
-  pinMode(doorSensor, INPUT_PULLUP);   // Door sensor with internal pull-up
-  pinMode(pirPin, INPUT);               // PIR sensor
+  pinMode(doorSensor, INPUT_PULLUP);     // Door sensor with internal pull-up
+  pinMode(pirPin, INPUT);                // PIR sensor
 
   setup_wifi();
   client.setServer(MQTT_SERVER, MQTT_PORT);
@@ -53,7 +53,7 @@ void reconnect() {
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
+      Serial.println("Try again in 5 seconds");
       delay(5000);
     }
   }
@@ -68,10 +68,9 @@ void loop() {
   int PIRvalue = digitalRead(pirPin);        // PIR sensor reading
   int DoorValue = digitalRead(doorSensor);   // Door switch reading
 
- 
   DoorValue = (DoorValue == LOW) ? 0 : 1;  
 
-  // Trigger buzzer and LED only when PIR detects motion or door is open
+  // Triggers buzzer and LED only when PIR detects motion or door is open
   if (PIRvalue == HIGH || DoorValue == HIGH) {
     digitalWrite(ledPin, HIGH);    
     tone(buzzer, 1000, 500);        
@@ -83,4 +82,3 @@ void loop() {
     digitalWrite(ledPin, LOW);    
   }
 }
-
