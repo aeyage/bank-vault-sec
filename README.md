@@ -92,10 +92,10 @@ Create a VM instance on the cloud console.
 Upon completion, spin up the instance and SSH into the newly created VM to install the MQTT broker to ensure that the publishers and subscribers route the messages correctly.
 
 ```sh
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install mosquitto
-sudo apt-get install mosquito-clients
+$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get install mosquitto
+$ sudo apt-get install mosquito-clients
 ```
 
 >[!TIP]
@@ -118,4 +118,47 @@ Create an Atlas cluster and configure it accordingly. Upon completion, authentic
 
 #### 4. MQTT and Database Configurations
 
-Extract the contents from `mongo_ingest.py` script and nano into the 
+Check on the current state and status of the Mosquitto MQTT broker service to ensure that the
+service is functioning as expected. In this regard, we want to determine if the Mosquitto service is running (active), stopped (inactive), or has failed.
+
+```sh
+$ sudo systemctl status mosquitto
+```
+If the Mosquitto service is disabled/ not running, execute the following commands to enable and start the service accordingly.
+
+```sh
+$ sudo systemctl enable mosquito
+$ sudo systemctl start mosquito
+```
+In order to ingest data into the database through the MQTT client, Paho MQTT library for Python is required to allow Python applications to use MQTT for messaging.
+
+```sh
+$ sudo apt install python3-pip
+$ pip install paho-mqtt
+```
+Install MongoDB and pymongo library which is a Python driver to allow interaction with MongoDB using Python.
+
+```sh
+$ sudo apt-get install -y mongodb
+$ pip install pymongo
+```
+Extract the contents from `mongo_ingest.py` and nano into the script in the cloud VM CLI and paste the contents. Write out (<kbd>⌃</kbd> + O) the script and
+exit the nano editor (<kbd>⌃</kbd> + X).
+
+Run the data ingestion script.
+
+```sh
+python3 mongo_ingest.py
+```
+
+## Data Visualisation
+
+The ingested data is visualised in MongoDB Atlas via Charts in near-real-time.
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/262cad02-8974-4d8a-a934-930075d00523" width="50%">
+</p> 
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/6243f8f2-f071-40f0-b300-3a94855cd848" width="50%">
+</p>
