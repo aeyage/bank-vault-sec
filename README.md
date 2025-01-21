@@ -71,22 +71,51 @@ We may commence setting up the project by wiring each component on the NodeMCU-3
 >[!NOTE]
 > You may use M-M, M-F, F-F jumper wires to connect the components to any available GPIO pin.
 > Please take care to match the pin number with the value defined in the source code
-> to ensure that the data can be ingested and read successfully in the software section later on.
+> to ensure that the data can be ingested and read successfully in the software section below.
 
 ### Software Setup
 
-#### Arduino IDE 
+#### 1. Arduino IDE 
 
-Download the latest release of Arduino IDE and set it up by installing all necessary libraries such as `Arduino_JSON`, `EspMQTTClient` and configure the board by installing and including `esp32` library in the IDE through board manager. Connect your machine to the NodeMCU-ESP32 via serial port (COMx) before compiling `intru_det.ino`.
+Download the latest release of [Arduino IDE](https://www.arduino.cc/en/software) and set it up by installing all necessary libraries such as `Arduino_JSON`, `EspMQTTClient` and configure the board by installing and including `esp32` library in the IDE through board manager. 
+
+Connect your machine to the NodeMCU-ESP32 via serial port (COMx) before compiling `intru_det.ino` sketch.
+
+#### 2. Google Compute Engine Virtual Machine
+
+Create a VM instance on the cloud console. 
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/e68689d6-bb96-4658-ac17-43decb6ff442" width="50%">
+<img src="https://github.com/user-attachments/assets/81bc6f4c-819d-4b70-aa8d-0fc6f09e519b" width="50%">
 </p>
 
-#### Google Compute Engine Virtual Machine
+Upon completion, spin up the instance and SSH into the newly created VM to install the MQTT broker to ensure that the publishers and subscribers route the messages correctly.
 
+```sh
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install mosquitto
+sudo apt-get install mosquito-clients
+```
 
+>[!TIP]
+> By default, most cloud vendors block all ingress traffic to ensure maximum security. This includes Google
+> Cloud Platform (GCP). To expose your service to external machines or users, particularly for MQTT, you
+> have to explicitly open the required ports. In this regard, MQTT uses port 1883 for non-TLS communications.
 
+Configure Virtual Private Cloud (VPC) network and set up the firewall rules accordingly to allow ingress traffic on TCP port 1883 to traverse on the network.
 
+> [!IMPORTANT]
+> Note that setting the source IP ranges to **0.0.0.0/0** will allow access from anywhere, which is not recommended for
+> production environments. As for the priority, VPC firewall rules with lower numbers have higher priority and
+> will be applied first.
 
+#### 3. MongoDB Atlas
 
+A persistent data storage is required for this use case instead of ingesting and storing the event data in localhost to preserve information across multiple instances.
+
+Create an Atlas cluster and configure it accordingly. Upon completion, authenticate and setup the connection with MongoDB Driver to retrieve the URI for database deployment.
+
+#### 4. MQTT and Database Configurations
+
+Extract the contents from `mongo_ingest.py` script and nano into the 
