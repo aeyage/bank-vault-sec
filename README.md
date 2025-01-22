@@ -136,7 +136,7 @@ In order to ingest data into the database through the MQTT client, Paho MQTT lib
 $ sudo apt install python3-pip
 $ pip install paho-mqtt
 ```
-Install MongoDB and pymongo library which is a Python driver to allow interaction with MongoDB using Python.
+Install MongoDB and pymongo library which is a Python driver to allow interaction with MongoDB.
 
 ```sh
 $ sudo apt-get install -y mongodb
