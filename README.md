@@ -114,7 +114,7 @@ Configure Virtual Private Cloud (VPC) network and set up the firewall rules acco
 
 A persistent data storage is required for this use case instead of ingesting and storing the event data in localhost to preserve information across multiple instances.
 
-Create an Atlas cluster and configure it accordingly. Upon completion, authenticate and setup the connection with MongoDB Driver to retrieve the URI for database deployment.
+Create an Atlas cluster and configure it accordingly. Upon completion, authenticate and set up the connection with MongoDB Driver to retrieve the URI for database deployment.
 
 #### 4. MQTT and Database Configurations
 
@@ -148,7 +148,7 @@ exit the nano editor (<kbd>⌃</kbd> + X).
 Run the data ingestion script.
 
 ```sh
-python3 mongo_ingest.py
+$ python3 mongo_ingest.py
 ```
 
 ## Data Visualisation
